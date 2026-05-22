@@ -33,7 +33,8 @@ export function Header() {
   }, []);
 
   return (
-    <header
+    <>
+      <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         pastHero
           ? "translate-y-0 opacity-100 pointer-events-auto"
@@ -92,21 +93,28 @@ export function Header() {
         <button
           aria-label="Open menu"
           onClick={() => setOpen(true)}
-          className={`lg:hidden p-2 rounded-md ${
-            scrolled ? "text-warm-brown" : "text-white"
+          className={`lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-full transition-colors shadow-md ${
+            scrolled
+              ? "bg-warm-brown text-cream-white hover:bg-warm-brown/90"
+              : "bg-warm-brown/80 text-cream-white backdrop-blur-md border border-white/20 hover:bg-warm-brown"
           }`}
         >
-          <MenuIcon className="w-6 h-6" />
+          <MenuIcon className="w-5 h-5" />
         </button>
       </div>
+      </header>
 
-      {/* Mobile drawer */}
+      {/* Mobile drawer — rendered as a sibling of <header> so its `fixed` positioning is relative to the viewport, not the transformed header. */}
       {open && (
-        <div className="lg:hidden fixed inset-0 z-[60] bg-warm-brown/95 backdrop-blur-md text-cream-white">
+        <div className="lg:hidden fixed inset-0 z-[70] bg-warm-brown text-cream-white overflow-y-auto">
           <div className="container flex items-center justify-between h-20">
             <span className="font-playfair text-xl font-bold">Menu</span>
-            <button onClick={() => setOpen(false)} aria-label="Close menu">
-              <X className="w-6 h-6" />
+            <button
+              onClick={() => setOpen(false)}
+              aria-label="Close menu"
+              className="inline-flex items-center justify-center w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            >
+              <X className="w-5 h-5" />
             </button>
           </div>
           <nav className="container mt-8 flex flex-col gap-6">
@@ -130,6 +138,6 @@ export function Header() {
           </nav>
         </div>
       )}
-    </header>
+    </>
   );
 }
