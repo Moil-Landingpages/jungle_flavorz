@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model QuoteRequest {
+  id          String   @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  eventType   String
+  guestCount  String
+  eventDate   String?
+  message     String?
+  createdAt   DateTime @default(now())
+}
+
+model Invoice {
+  id              String         @id @default(cuid())
+  // Public token used in the /pay/[token] payment link sent to the client.
+  publicToken     String         @unique
+  clientName      String
+  clientEmail     String
+  description     String
+  // Amount in cents (Stripe uses smallest currency unit).
+  amountCents     Int
+  currency        String         @default("usd")
+  // SENT | PAID | CANCELED  (string so SQLite + Postgres both work)
+  status          String         @default("SENT")
+  stripeSessionId String?
+  paidAt          DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+}
