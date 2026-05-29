@@ -227,7 +227,7 @@ export const menuData: Record<"appetizers" | "mains" | "sides", MenuItem[]> = {
       ingredients: ["Cassava leaves", "Palm oil", "Garlic", "Onions"],
       pairings: ["White rice", "Fried plantains"],
       origin: "Central African classic",
-      images: ["/menu/white_rice and veggies_2.jpg"],
+      images: ["/menu/pondu.png"],
     },
     {
       name: "Pinto Beans",
