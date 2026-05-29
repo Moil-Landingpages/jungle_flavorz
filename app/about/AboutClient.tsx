@@ -43,8 +43,8 @@ export function AboutClient() {
               className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border-8 border-cream-white"
             >
               <Image
-                src="/menu/at_an_event.jpg"
-                alt="Chef Linda at an event"
+                src="/chef_linda.jpeg"
+                alt="Chef Linda"
                 fill
                 sizes="(max-width: 1024px) 100vw, 500px"
                 className="object-cover"

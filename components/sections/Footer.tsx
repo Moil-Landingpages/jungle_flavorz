@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
@@ -9,11 +10,13 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-rich-gold to-caramel flex items-center justify-center">
-                <span className="font-playfair text-cream-white text-lg font-black">
-                  JF
-                </span>
-              </div>
+              <Image
+                src="/logo.png"
+                alt="Jungle Flavorz logo"
+                width={48}
+                height={48}
+                className="w-12 h-12 rounded-full object-cover"
+              />
               <h3 className="font-playfair text-2xl font-bold text-cream-white">
                 Jungle Flavorz
               </h3>

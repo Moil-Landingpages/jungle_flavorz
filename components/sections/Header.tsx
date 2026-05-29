@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Menu as MenuIcon, X } from "lucide-react";
 
@@ -47,11 +48,14 @@ export function Header() {
     >
       <div className="container flex items-center justify-between h-20">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-rich-gold to-caramel flex items-center justify-center shadow-md group-hover:scale-105 transition-transform">
-            <span className="font-playfair text-cream-white text-xl font-black">
-              JF
-            </span>
-          </div>
+          <Image
+            src="/logo.png"
+            alt="Jungle Flavorz logo"
+            width={44}
+            height={44}
+            priority
+            className="w-11 h-11 rounded-full object-cover shadow-md group-hover:scale-105 transition-transform"
+          />
           <div className="hidden sm:block leading-tight">
             <div
               className={`font-playfair text-xl font-black tracking-tight ${
